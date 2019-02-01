@@ -14,7 +14,9 @@ class Tasks extends Component {
 
 //Proptypes
 Tasks.propTypes = {
-  tasks: PropTypes.array.isRequired
+  tasks: PropTypes.array.isRequired,
+  toggleComplete: PropTypes.func.isRequired,
+  delTask: PropTypes.func.isRequired
 }
 
 export default Tasks;

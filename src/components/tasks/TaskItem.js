@@ -22,13 +22,15 @@ class TaskItem extends Component {
           <button onClick={this.props.delTask.bind(this, id)} style={btnStyle}>Remove</button>
         </p>
       </div>
-    );
+    )
   }
 }
 
 //Proptypes
 TaskItem.propTypes = {
-  task: PropTypes.object.isRequired
+  task: PropTypes.object.isRequired,
+  toggleComplete: PropTypes.func.isRequired,
+  delTask: PropTypes.func.isRequired
 }
 
 const btnStyle = {

@@ -1,28 +1,14 @@
 import React, { Component } from 'react';
 import Header from './components/layout/Header'
 import Tasks from './components/tasks/Tasks';
+import AddTask from './components/addtasks/AddTask';
+import uuid from 'uuid';
 
 import './App.css';
 
 class App extends Component {
   state = {
-    tasks: [ 
-      {
-        id: 1,
-        title: 'Code',
-        completed: false
-      },
-      {
-        id: 2,
-        title: 'Cook',
-        completed: false
-      },
-      {
-        id: 3,
-        title: 'Bojack Horseman',
-        completed: false
-      }
-    ]
+    tasks: []
   }
 
   // toggle status 
@@ -41,12 +27,24 @@ class App extends Component {
     this.setState({ tasks: [...this.state.tasks.filter(task => task.id !== id)] });
   }
 
+  //add task
+  addTask = (title) => {
+    const newTask = {
+      id: uuid.v4(),
+      title,
+      completed: false
+    }
+    this.setState({ tasks: [...this.state.tasks, newTask] })
+  }
 
   render() {
     return (
       <div className="App">
-        <Header />
-        <Tasks tasks={this.state.tasks} toggleComplete={this.toggleComplete} delTask={this.delTask}/>
+        <div className="container">
+          <Header />
+          <AddTask addTask={this.addTask}/>
+          <Tasks tasks={this.state.tasks} toggleComplete={this.toggleComplete} delTask={this.delTask}/>
+      </div>
       </div>
     );
   }
