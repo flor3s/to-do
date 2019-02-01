@@ -6,7 +6,7 @@ class Tasks extends Component {
   render() {
     console.log(this.props.tasks)
     return this.props.tasks.map((task) => (
-        <TaskItem key={task.id} task={task} toggleComplete={this.props.toggleComplete}/>
+        <TaskItem key={task.id} task={task} toggleComplete={this.props.toggleComplete} delTask={this.props.delTask}/>
       ));
   }
 }

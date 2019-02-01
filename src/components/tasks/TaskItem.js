@@ -19,6 +19,7 @@ class TaskItem extends Component {
         <p>
           <input type="checkbox" onChange={this.props.toggleComplete.bind(this, id)} /> { ' ' }
           {title}
+          <button onClick={this.props.delTask.bind(this, id)} style={btnStyle}>Remove</button>
         </p>
       </div>
     );
@@ -29,5 +30,15 @@ class TaskItem extends Component {
 TaskItem.propTypes = {
   task: PropTypes.object.isRequired
 }
+
+const btnStyle = {
+  background: '#D83500',
+  color: '#fff',
+  border: 'none',
+  padding: '10px 10px',
+  borderRadius: '5px',
+  cursor: 'pointer',
+  float: 'right',
+};
 
 export default TaskItem;

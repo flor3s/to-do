@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Tasks from './components/Tasks';
+import Header from './components/layout/Header'
+import Tasks from './components/tasks/Tasks';
 
 import './App.css';
 
@@ -24,6 +25,7 @@ class App extends Component {
     ]
   }
 
+  // toggle status 
   toggleComplete = (id) => {
     this.setState({ tasks: this.state.tasks.map(task => {
       if(task.id === id) {
@@ -34,10 +36,17 @@ class App extends Component {
     }) });
   }
 
+  // delete task
+  delTask = (id) => {
+    this.setState({ tasks: [...this.state.tasks.filter(task => task.id !== id)] });
+  }
+
+
   render() {
     return (
       <div className="App">
-        <Tasks tasks={this.state.tasks} toggleComplete={this.toggleComplete}/>
+        <Header />
+        <Tasks tasks={this.state.tasks} toggleComplete={this.toggleComplete} delTask={this.delTask}/>
       </div>
     );
   }
