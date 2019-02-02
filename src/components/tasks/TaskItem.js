@@ -6,7 +6,7 @@ class TaskItem extends Component {
   getStyle = () => {
     return {
       background: '#f4f4f4',
-      padding: '10px',
+      padding: '10px 10px',
       borderBottom: '1px #ccc solid',
       color: this.props.task.completed ? 'rgb(0,0,0,0.3)' : 'rgb(0,0,0,1)',
       textDecoration: this.props.task.completed ? 'line-through' : 'none',
@@ -45,10 +45,13 @@ const btnStyle = {
   borderRadius: '5px',
   cursor: 'pointer',
   float: 'right',
+  position: 'relative',
+  top: '-5px'
 };
 
 const timeStamp = {
-  color: '#AEB6BF'
+  color: '#AEB6BF',
+  fontSize: '15px'
 }
 
 export default TaskItem;
