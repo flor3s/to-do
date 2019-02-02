@@ -32,7 +32,8 @@ class App extends Component {
     const newTask = {
       id: uuid.v4(),
       title,
-      completed: false
+      completed: false,
+      startTime: new Date()
     }
     this.setState({ tasks: [...this.state.tasks, newTask] })
   }

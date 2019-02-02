@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 
 class TaskItem extends Component {
@@ -13,12 +14,15 @@ class TaskItem extends Component {
   }
 
   render() {
-    const { id, title } = this.props.task;
+    const { id, title, startTime } = this.props.task;
+    const formattedDate = <Moment format="MM/DD/YYYY">{startTime}</Moment>
+    const formattedTime = <Moment format="hh:mm A">{startTime}</Moment>
     return (
       <div style={this.getStyle()}>
         <p>
           <input type="checkbox" onChange={this.props.toggleComplete.bind(this, id)} /> { ' ' }
-          {title}
+          {title} 
+          <span style={timeStamp}> - Created {formattedDate} at {formattedTime}</span>
           <button onClick={this.props.delTask.bind(this, id)} style={btnStyle}>Remove</button>
         </p>
       </div>
@@ -42,5 +46,9 @@ const btnStyle = {
   cursor: 'pointer',
   float: 'right',
 };
+
+const timeStamp = {
+  color: '#AEB6BF'
+}
 
 export default TaskItem;
