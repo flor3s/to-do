@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Header from './components/layout/Header';
+import Moment from 'react-moment';
 import Filter from './components/filter/Filter';
 import Tasks from './components/tasks/Tasks';
 import AddTask from './components/addtasks/AddTask';
-import uuid from 'uuid';
+import axios from 'axios';
 
 import './App.css';
 
@@ -11,6 +12,12 @@ class App extends Component {
   state = {
     tasks: [],
     filter: true
+  }
+
+  componentDidMount(){
+    axios.get('http://localhost:3001/tasks')
+    .then(response => this.setState({ tasks: response.data})
+    )
   }
 
   // toggle status 
@@ -26,23 +33,22 @@ class App extends Component {
 
   // delete task
   delTask = (id) => {
-    this.setState({ tasks: [...this.state.tasks.filter(task => task.id !== id)] });
+    axios.delete(`http://localhost:3001/tasks/${id}`)
+    .then(response => this.setState({ tasks: [...this.state.tasks.filter(task => task.id !== id)] }));
   }
 
   // add task
   addTask = (title) => {
-    const newTask = {
-      id: uuid.v4(),
+    var jsonDate = (new Date()).toJSON();
+    axios.post('http://localhost:3001/tasks', {
       title,
       completed: false,
-      startTime: new Date()
-    }
-    this.setState({ tasks: [...this.state.tasks, newTask] })
+      startTime: jsonDate
+    }).then(response => this.setState({ tasks: [...this.state.tasks, response.data] }));
   }
 
   // toggle filter
   toggleFilter = () => {
-    const f = this.state.filter
     this.setState({ filter: !this.state.filter });
   }
 

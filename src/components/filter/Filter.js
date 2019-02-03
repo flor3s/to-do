@@ -13,7 +13,6 @@ class Filter extends Component {
   }
 
   render() {
-    const filter = this.props.filter;
     return (
       <p style={this.getStyle()}>
         <input type="checkbox" onChange={this.props.toggleFilter} /> { ' ' }
@@ -22,15 +21,6 @@ class Filter extends Component {
     )
   }
 }
-
-const btnStyle = {
-  background: '#D83500',
-  color: '#fff',
-  border: 'none',
-  padding: '10px 10px',
-  borderRadius: '5px',
-  cursor: 'pointer',
-};
 
 //Proptypes
 // Tasks.propTypes = {

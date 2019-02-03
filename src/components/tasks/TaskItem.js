@@ -23,7 +23,7 @@ class TaskItem extends Component {
           <input type="checkbox" onChange={this.props.toggleComplete.bind(this, id)} /> { ' ' }
           {title} 
           <span style={timeStamp}> - Created {formattedDate} at {formattedTime}</span>
-          <button onClick={this.props.delTask.bind(this, id)} style={btnStyle}>Remove</button>
+          <button onClick={this.props.delTask.bind(this, id)} style={btnStyle}>X</button>
         </p>
       </div>
     )
