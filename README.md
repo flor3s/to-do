@@ -1,5 +1,5 @@
 ### To Do App
-** Single Page Task Management App
+**Single Page Task Management App**
 
 This proof of concept app utilizes a React front end with a simple JSON db to store task data.
 
